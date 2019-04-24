@@ -32,8 +32,9 @@ release = '@DCORE_RELEASE@'
 #mathjax_path = "@TRIQS_MATHJAX_PATH@/MathJax.js?config=default"
 templates_path = ['@CMAKE_SOURCE_DIR@/doc/_templates']
 
-html_theme = 'classic'
+html_theme = 'sphinx13'
 #html_theme_path = ['@TRIQS_THEMES_PATH@']
+html_theme_path = ['@CMAKE_SOURCE_DIR@/doc/_themes']
 html_show_sphinx = False
 html_context = {'header_title': 'DCore',
                 'header_subtitle': 'integrated DMFT software for CORrelated Electrons',
