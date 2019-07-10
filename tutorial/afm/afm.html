@@ -4,34 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Antiferromagnetic state in 3D Hubbard model &#8212; DCore 2.0.0 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/wild.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/dcore.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '2.0.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../_static/dcore.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="author" title="About these documents" href="../../about.html" />
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="QuantumESPRESSO + Wannier90" href="../qe.html" />
     <link rel="prev" title="Spin-Orbit Coupling" href="../spin_orbit/spin_orbit.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -59,12 +47,12 @@
 <li>How to calculate antiferromagnetic states</li>
 <li>How to set an initial guess for the self-energy</li>
 </ul>
-<p>As a particular example, we consider the Hubbard model on a cubic lattice with nearest neighbor hopping of <span class="math">\(t=1\)</span>.
+<p>As a particular example, we consider the Hubbard model on a cubic lattice with nearest neighbor hopping of <span class="math notranslate nohighlight">\(t=1\)</span>.
 Within the single-site DMFT approximation, the model shows an antiferromagnetic transition at low temperature.
-The transition temperature was estimated as <span class="math">\(T_\mathrm{c}/t\simeq 0.5\)</span> in <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevB.72.060411">a previous study</a>.
-In this tutorial, we compute the antiferromagetic state below <span class="math">\(T_\mathrm{c}\)</span> using the ALPS/CT-HYB solver.
+The transition temperature was estimated as <span class="math notranslate nohighlight">\(T_\mathrm{c}/t\simeq 0.5\)</span> in <a class="reference external" href="https://link.aps.org/doi/10.1103/PhysRevB.72.060411">a previous study</a>.
+In this tutorial, we compute the antiferromagetic state below <span class="math notranslate nohighlight">\(T_\mathrm{c}\)</span> using the ALPS/CT-HYB solver.
 The complete input file is shown below.</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[model]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[model]</span>
 <span class="na">seedname</span> <span class="o">=</span> <span class="s">cubic</span>
 <span class="na">lattice</span> <span class="o">=</span> <span class="s">wannier90</span>
 <span class="na">ncor</span> <span class="o">=</span> <span class="s">8</span>
@@ -106,33 +94,33 @@ The complete input file is shown below.</p>
 <div class="section" id="define-lattice-model">
 <h2>Define lattice model<a class="headerlink" href="#define-lattice-model" title="Permalink to this headline">¶</a></h2>
 <p>First, we define the hopping matrix of the 3D Hubbard model with a 2x2x2 unit cell.
-Running <a class="reference download internal" href="../../_downloads/mk_hr.py" download=""><code class="xref download docutils literal"><span class="pre">mk_hr.py</span></code></a> generates a text file (cubic_hr.dat) in the Wannier90 format.
+Running <a class="reference download internal" download="" href="../../_downloads/33e7907a243a3b032762c5668b11589d/mk_hr.py"><code class="xref download docutils literal notranslate"><span class="pre">mk_hr.py</span></code></a> generates a text file (cubic_hr.dat) in the Wannier90 format.
 The unit cell contains eight sites whose internal coordinates are (0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1).</p>
-<p>We now assume an antiferromagnetic order at <span class="math">\(q=(\pi, \pi, \pi)\)</span>.
+<p>We now assume an antiferromagnetic order at <span class="math notranslate nohighlight">\(q=(\pi, \pi, \pi)\)</span>.
 To this end, we assign the eight sites (correlated shells) to two inequivalent shells by using the <cite>corr_to_inequiv</cite> parameter in the model section.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python mk_hr.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python mk_hr.py
 </pre></div>
 </div>
 </div>
 <div class="section" id="generate-initial-guess-for-self-energy">
 <h2>Generate initial guess for self-energy<a class="headerlink" href="#generate-initial-guess-for-self-energy" title="Permalink to this headline">¶</a></h2>
 <p>Second, we generate intial guesses for the (static) self-energies on the two inequivalent shells.
-Running <a class="reference download internal" href="../../_downloads/mk_init_se.py" download=""><code class="xref download docutils literal"><span class="pre">mk_init_se.py</span></code></a> generates <cite>init_se_up.txt</cite> and <cite>init_se_down.txt</cite>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python mk_init_se.py
+Running <a class="reference download internal" download="" href="../../_downloads/22d11ddcc3a12c5b4aa3042bbb92b3f9/mk_init_se.py"><code class="xref download docutils literal notranslate"><span class="pre">mk_init_se.py</span></code></a> generates <cite>init_se_up.txt</cite> and <cite>init_se_down.txt</cite>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python mk_init_se.py
 </pre></div>
 </div>
 </div>
 <div class="section" id="self-consistent-calculations">
 <h2>Self-consistent calculations<a class="headerlink" href="#self-consistent-calculations" title="Permalink to this headline">¶</a></h2>
 <p>Now, DMFT calculations can be done as usual.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MPIRUN</span><span class="o">=</span><span class="s2">&quot;mpirun&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MPIRUN</span><span class="o">=</span><span class="s2">&quot;mpirun&quot;</span>
 dcore_pre cubic.ini &gt; output-pre
 dcore cubic.ini --np <span class="m">48</span> &gt; output
 dcore_post cubic.ini --np <span class="m">48</span> &gt; output-post
 </pre></div>
 </div>
-<p>In the standard output of <cite>dcore</cite>, you will see that the magnetic moments converge to <span class="math">\(\simeq 0.43\)</span> (86 % of the saturated moment).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Density Matrix
+<p>In the standard output of <cite>dcore</cite>, you will see that the magnetic moments converge to <span class="math notranslate nohighlight">\(\simeq 0.43\)</span> (86 % of the saturated moment).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Density Matrix
 
   Inequivalent Shell  <span class="m">0</span>
 
@@ -162,7 +150,7 @@ dcore_post cubic.ini --np <span class="m">48</span> &gt; output-post
 </pre></div>
 </div>
 <p>Inequivalent shell0</p>
-<a class="reference internal image-reference" href="../../_images/iter_sigma-ish03.png"><img alt="../../_images/iter_sigma-ish03.png" class="align-center" src="../../_images/iter_sigma-ish03.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../_images/iter_sigma-ish01.png"><img alt="../../_images/iter_sigma-ish01.png" class="align-center" src="../../_images/iter_sigma-ish01.png" style="width: 800px;" /></a>
 <p>Inequivalent shell1</p>
 <a class="reference internal image-reference" href="../../_images/iter_sigma-ish1.png"><img alt="../../_images/iter_sigma-ish1.png" class="align-center" src="../../_images/iter_sigma-ish1.png" style="width: 800px;" /></a>
 </div>
@@ -177,7 +165,7 @@ dcore_post cubic.ini --np <span class="m">48</span> &gt; output-post
             <p class="logo"><a href="../../contents.html">
               <img class="logo" src="../../_static/logo_dcore1.png" alt="Logo"/>
             </a></p>
-<h3><a href="../../contents.html">Table Of Contents</a></h3>
+<h3><a href="../../contents.html">Table of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">DCore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
@@ -206,12 +194,14 @@ dcore_post cubic.ini --np <span class="m">48</span> &gt; output-post
                         title="next chapter">QuantumESPRESSO + Wannier90</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>

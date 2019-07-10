@@ -4,34 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Multi-atoms: Revisiting Pb &#8212; DCore 2.0.0 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/wild.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/dcore.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '2.0.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../_static/dcore.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="author" title="About these documents" href="../../about.html" />
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Downfolding with RESPACK (SrVO3)" href="../srvo3_respack/respack.html" />
     <link rel="prev" title="Spin-orbit interaction: The case with Pb" href="../pb/pb.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -67,8 +55,8 @@ For more details, please see <a class="reference internal" href="../../install.h
 <a class="reference internal image-reference" href="../../_images/pb4_struct.png"><img alt="../../_images/pb4_struct.png" class="align-center" src="../../_images/pb4_struct.png" style="width: 200px;" /></a>
 <div class="section" id="scf-calculation-of-quantum-espresso">
 <h2>SCF calculation of Quantum ESPRESSO<a class="headerlink" href="#scf-calculation-of-quantum-espresso" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference download internal" href="../../_downloads/scf_pb4.in" download=""><code class="xref download docutils literal"><span class="pre">scf_pb4.in</span></code></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">CONTROL</span>
+<p><a class="reference download internal" download="" href="../../_downloads/3a167901035422b8f5267bd321c662a5/scf_pb4.in"><code class="xref download docutils literal notranslate"><span class="pre">scf_pb4.in</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">CONTROL</span>
  <span class="n">calculation</span> <span class="o">=</span> <span class="s1">&#39;scf&#39;</span>
       <span class="n">outdir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
   <span class="n">pseudo_dir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
@@ -108,7 +96,7 @@ For more details, please see <a class="reference internal" href="../../install.h
 <p>The pseudopotential is included in
 <a class="reference external" href="http://theossrv1.epfl.ch/uploads/Main/NoBackup/rel-pbe.0.3.1.tgz">rel-pbe.0.3.1.tgz</a>
 of the <a class="reference external" href="http://theossrv1.epfl.ch/Main/Pseudopotentials">THEOS PSLibrary</a>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw.x -in scf_pb4.in
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw.x -in scf_pb4.in
 </pre></div>
 </div>
 </div>
@@ -118,8 +106,8 @@ of the <a class="reference external" href="http://theossrv1.epfl.ch/Main/Pseudop
 <h3>Generate Bloch orbitals for the Wannier<a class="headerlink" href="#generate-bloch-orbitals-for-the-wannier" title="Permalink to this headline">¶</a></h3>
 <p>Perform non-scf calculation for generating Bloch orbitals that are used
 in the wannierization.</p>
-<p><a class="reference download internal" href="../../_downloads/nscf_pb4.in" download=""><code class="xref download docutils literal"><span class="pre">nscf_pb4.in</span></code></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">CONTROL</span>
+<p><a class="reference download internal" download="" href="../../_downloads/46e9f05f31b186276bec8bb47e5f1672/nscf_pb4.in"><code class="xref download docutils literal notranslate"><span class="pre">nscf_pb4.in</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">CONTROL</span>
  <span class="n">calculation</span> <span class="o">=</span> <span class="s1">&#39;bands&#39;</span>
       <span class="n">outdir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
   <span class="n">pseudo_dir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
@@ -182,12 +170,12 @@ in the wannierization.</p>
 </pre></div>
 </div>
 <p>This <em>k</em>-grid is generated as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kmesh.pl <span class="m">3</span> <span class="m">3</span> <span class="m">3</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kmesh.pl <span class="m">3</span> <span class="m">3</span> <span class="m">3</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal"><span class="pre">kmesh.pl</span></code> is located in the <cite>utility/</cite> directory of Wannier90.</p>
-<p>Then, run <code class="docutils literal"><span class="pre">pw.x</span></code> as</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw.x -in nscf_pb4.in
+<p>where <code class="docutils literal notranslate"><span class="pre">kmesh.pl</span></code> is located in the <cite>utility/</cite> directory of Wannier90.</p>
+<p>Then, run <code class="docutils literal notranslate"><span class="pre">pw.x</span></code> as</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw.x -in nscf_pb4.in
 </pre></div>
 </div>
 </div>
@@ -196,8 +184,8 @@ in the wannierization.</p>
 <p>Pre-process with wannier90 program.
 It is always required before pw2wannier.x runs.
 We will wannierize Pb 6p orbitals.</p>
-<p><a class="reference download internal" href="../../_downloads/pb4.win" download=""><code class="xref download docutils literal"><span class="pre">pb4.win</span></code></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">num_bands</span>         <span class="o">=</span>  <span class="mi">120</span> 
+<p><a class="reference download internal" download="" href="../../_downloads/7a4c73d94c5037b6d4d9695b64c546ac/pb4.win"><code class="xref download docutils literal notranslate"><span class="pre">pb4.win</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_bands</span>         <span class="o">=</span>  <span class="mi">120</span> 
 <span class="n">num_wann</span>          <span class="o">=</span>   <span class="mi">24</span>
 <span class="n">spinors</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
 
@@ -280,7 +268,7 @@ We will wannierize Pb 6p orbitals.</p>
 <p class="first admonition-title">Note</p>
 <p>For the following DMFT calculation,
 the projection of the Wannier function should be the correct order, namely,</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">begin</span> <span class="n">projections</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">begin</span> <span class="n">projections</span>
 <span class="n">First_shell</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 <span class="n">First_shell</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="n">Second_shell</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
@@ -291,17 +279,17 @@ the projection of the Wannier function should be the correct order, namely,</p>
 </div>
 </div>
 <p>The <em>k</em> grid is generated as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ kmesh.pl <span class="m">3</span> <span class="m">3</span> <span class="m">3</span> wan
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ kmesh.pl <span class="m">3</span> <span class="m">3</span> <span class="m">3</span> wan
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wannier90.x -pp pb4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wannier90.x -pp pb4
 </pre></div>
 </div>
 </div>
 <div class="section" id="qe-to-wannier90-interface">
 <h3>QE to wannier90 interface<a class="headerlink" href="#qe-to-wannier90-interface" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference download internal" href="../../_downloads/pw2wan_pb4.in" download=""><code class="xref download docutils literal"><span class="pre">pw2wan_pb4.in</span></code></a></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">inputpp</span> 
+<p><a class="reference download internal" download="" href="../../_downloads/ebb32bc07ab2c4634f02d550707ed548/pw2wan_pb4.in"><code class="xref download docutils literal notranslate"><span class="pre">pw2wan_pb4.in</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">inputpp</span> 
    <span class="n">outdir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;pb&#39;</span>
    <span class="n">seedname</span> <span class="o">=</span> <span class="s1">&#39;pb&#39;</span>
@@ -313,23 +301,23 @@ the projection of the Wannier function should be the correct order, namely,</p>
 <span class="o">/</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw2wan.x -in pw2wan_pb4.in
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpirun -np <span class="m">4</span> pw2wan.x -in pw2wan_pb4.in
 </pre></div>
 </div>
 </div>
 <div class="section" id="wannier90">
 <h3>Wannier90<a class="headerlink" href="#wannier90" title="Permalink to this headline">¶</a></h3>
-<p>Execute <code class="docutils literal"><span class="pre">wannier90.x</span></code> for the actual wannierization.
+<p>Execute <code class="docutils literal notranslate"><span class="pre">wannier90.x</span></code> for the actual wannierization.
 The input file is the same as that for the pre-processing run.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wannier90 pb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wannier90 pb
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="dmft-calculation">
 <h2>DMFT calculation<a class="headerlink" href="#dmft-calculation" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference download internal" href="../../_downloads/pb4.ini" download=""><code class="xref download docutils literal"><span class="pre">pb4.ini</span></code></a></p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[model]</span>
+<p><a class="reference download internal" download="" href="../../_downloads/242b91cc7f29374e6ec2f9b1c968cde5/pb4.ini"><code class="xref download docutils literal notranslate"><span class="pre">pb4.ini</span></code></a></p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[model]</span>
 <span class="na">lattice</span> <span class="o">=</span> <span class="s">wannier90</span>
 <span class="na">seedname</span> <span class="o">=</span> <span class="s">pb</span>
 <span class="na">nelec</span> <span class="o">=</span> <span class="s">8.0</span>
@@ -373,19 +361,19 @@ The input file is the same as that for the pre-processing run.</p>
 </div>
 <div class="section" id="dmft-setup-dcore-pre">
 <h3>DMFT setup: dcore_pre<a class="headerlink" href="#dmft-setup-dcore-pre" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ dcore_pre pb4.ini
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dcore_pre pb4.ini
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-self-consistent-dft-dmft-dcore">
 <h3>Running self-consistent DFT+DMFT : dcore<a class="headerlink" href="#running-self-consistent-dft-dmft-dcore" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ mpiexec -np <span class="m">432</span> dcore pb4.ini
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mpiexec -np <span class="m">432</span> dcore pb4.ini
 </pre></div>
 </div>
 </div>
 <div class="section" id="post-processing-and-data-analysis-dcore-post">
 <h3>Post-processing and data analysis: dcore_post<a class="headerlink" href="#post-processing-and-data-analysis-dcore-post" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ dcore_post pb4.ini
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dcore_post pb4.ini
 $ gnuplot pb4_akw.gp
 </pre></div>
 </div>
@@ -404,7 +392,7 @@ $ gnuplot pb4_akw.gp
             <p class="logo"><a href="../../contents.html">
               <img class="logo" src="../../_static/logo_dcore1.png" alt="Logo"/>
             </a></p>
-<h3><a href="../../contents.html">Table Of Contents</a></h3>
+<h3><a href="../../contents.html">Table of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">DCore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
@@ -433,12 +421,14 @@ $ gnuplot pb4_akw.gp
                         title="next chapter">Downfolding with RESPACK (SrVO<sub>3</sub>)</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
