@@ -14,5 +14,7 @@ script:
   - docker exec dcore_container make test
 
 after_script:
+  - docker cp -r dcore_container:build/DCore/doc/html .
   - docker-compose stop
   - docker-compose rm -f
+  - find html
