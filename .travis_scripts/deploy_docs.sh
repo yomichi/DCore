@@ -7,7 +7,7 @@ feature_branch=${TRAVIS_BRANCH%-autodoc}
 if [ "_$TRAVIS_BRANCH" != "_master" ] && [ ${feature_branch} == ${TRAVIS_BRANCH} ] && [ -z "$TRAVIS_TAG" ] ; then exit 0; fi
 
 
-openssl aes-256-cbc -K $encrypted_aa0e0f6aad31_key -iv $encrypted_aa0e0f6aad31_iv -in ${ROOTDIR}/.travis_scripts/id_rsa.enc -out ~/.ssh/id_rsa -d
+openssl aes-256-cbc -K "$encrypted_aa0e0f6aad31_key" -iv "$encrypted_aa0e0f6aad31_iv" -in ${ROOTDIR}/.travis_scripts/id_rsa.enc -out ~/.ssh/id_rsa -d
 
 chmod 600 ~/.ssh/id_rsa
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
@@ -15,7 +15,7 @@ echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 git clone git@github.com:${TRAVIS_REPO_SLUG} dcore-repo
 cd dcore-repo
 git checkout gh-pages
-if [ ${feature_branch} == ${TRAVIS_BRANCH} ]; then
+if [ ${feature_branch} != ${TRAVIS_BRANCH} ]; then
   cp -r ${ROOTDIR}/dcore_doc $feature_branch
   git add $feature_branch
 else
@@ -23,8 +23,8 @@ else
   git add .
 fi
 
-git config user.email ""
-git config user.name "DCore"
+git config --global user.email ""
+git config --global user.name "DCore"
 git commit -m "Update by TravisCI (\\#${TRAVIS_BUILD_NUMBER})"
 ST=$?
 if [ $ST == 0 ]; then
