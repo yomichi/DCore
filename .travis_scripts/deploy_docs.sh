@@ -3,9 +3,8 @@
 # This is a pull request, finish.
 if [ "_$TRAVIS_PULL_REQUEST" != "_false" ] ;then exit 0; fi
 # This is neither master nor tag, finish.
-if [ "_$TRAVIS_BRANCH" != "_master" ] && [ ${TRAVIS_BRANCH%-autodoc} != ${TRAVIS_BRANCH} ] && [ -z "$TRAVIS_TAG" ] ; then exit 0; fi
-
 feature_branch=${TRAVIS_BRANCH%-autodoc}
+if [ "_$TRAVIS_BRANCH" != "_master" ] && [ ${feature_branch} == ${TRAVIS_BRANCH} ] && [ -z "$TRAVIS_TAG" ] ; then exit 0; fi
 
 openssl aes-256-cbc -K $encrypted_aa0e0f6aad31_key -iv $encrypted_aa0e0f6aad31_iv -in ${ROOTDIR}/.travis_scripts/ssh_key.enc -out ~/.ssh/id_rsa -d
 chmod 600 ~/.ssh/id_rsa
