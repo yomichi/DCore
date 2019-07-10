@@ -6,9 +6,9 @@ if [ "_$TRAVIS_PULL_REQUEST" != "_false" ] ;then exit 0; fi
 feature_branch=${TRAVIS_BRANCH%-autodoc}
 if [ "_$TRAVIS_BRANCH" != "_master" ] && [ ${feature_branch} == ${TRAVIS_BRANCH} ] && [ -z "$TRAVIS_TAG" ] ; then exit 0; fi
 
-openssl aes-256-cbc -K $encrypted_db0e0a2bd23f_key -iv $encrypted_db0e0a2bd23f_iv -in ${ROOTDIR}/.travis_scripts/ssh_key.enc -out ~/.ssh/id_rsa -d
-chmod 600 ~/.ssh/id_rsa
-echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+openssl aes-256-cbc -K $encrypted_db0e0a2bd23f_key -iv $encrypted_db0e0a2bd23f_iv -in ${ROOTDIR}/.travis_scripts/ssh_key.enc -out ~/.ssh/ssh_key -d
+chmod 600 ~/.ssh/ssh_key
+echo -e "Host github.com\n\tStrictHostKeyChecking no\nIdentityFile ~/.ssh/ssh_key\n" >> ~/.ssh/config
 
 git clone git@github.com:${TRAVIS_REPO_SLUG} dcore-repo
 cd dcore-repo
