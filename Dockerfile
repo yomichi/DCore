@@ -11,4 +11,4 @@ WORKDIR $HOME/build/DCore
 ENV CTEST_OUTPUT_ON_FAILURE=1
 RUN cmake -DCMAKE_VERBOSE_MAKEFILE=ON $HOME/src/DCore -DTRIQS_PATH=$HOME/opt/triqs -DCMAKE_INSTALL_PREFIX=$HOME/opt/DCore -DBUILD_DOC=ON \
  && make -j 2 all && make -j 2 install
-RUN tree .
+RUN find .
